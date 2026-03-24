@@ -8,7 +8,7 @@ public class Ej04 {
 		var map = new HashMap <String,String>();
 		map.put("HOLA","Hola, ¿qué tal?");
 		map.put("ENCANTADO","Encantado de conocerte yo también");
-		map.put("ADIÓS","Adiós, espero volverte a ver pronto");
+		map.put("ADIOS","Adiós, espero volverte a ver pronto");
 		map.put("HORA","Lo siento, no llevo reloj");
 		map.put("NOMBRE","Mi nombre es Eliza");
 		
