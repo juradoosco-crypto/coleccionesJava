@@ -1,5 +1,7 @@
 package ejHashMap.eje04;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -13,26 +15,39 @@ public class Ej04 {
 		map.put("NOMBRE","Mi nombre es Eliza");
 		
 		String msgDefault = "Lo siento, no te comprendo";
+		String msgBloqueado = "No eres muy educado";
 		
+		var listapalabraBloquear = Arrays.asList("caca","culo","pedo","pis");
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Bienvenido al sistema Eliza 0.0:");
 		String frase;
 		boolean fin=false;
 		do {
 			frase = sc.nextLine();
-			boolean encontrada = false;
-			for (String clave: map.keySet()) {
-				if (frase.toUpperCase().contains(clave)) {
-					encontrada = true;
-					System.out.println(">"+map.get(clave));
+			boolean correcto = true;
+			for (String valor:listapalabraBloquear) {
+				if (frase.contains(valor)) {
+					System.out.println(msgBloqueado+">"+valor.toUpperCase()+"<");
+					correcto = false;
+					break;
+				}
+			}
+			if (correcto) {
+				boolean encontrada = false;
+				for (String clave : map.keySet()) {
+					if (frase.toUpperCase().contains(clave)) {
+						encontrada = true;
+						System.out.println(">"+map.get(clave));
+					}
 					if (frase.toUpperCase().contains("ADIOS")) {
 						fin = true;
 					}
 					break;
-				} 
-			}
-			if (!encontrada) {
-				System.out.println(msgDefault);
+				}
+				if (! encontrada) {
+					System.out.println(msgDefault);
+				}
 			}
 			
 		} while (!fin);
